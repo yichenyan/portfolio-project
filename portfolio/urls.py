@@ -24,5 +24,5 @@ from django.urls import include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',jobs.views.homepage,name='home'),
-    path('blog/', include('blog.urls'))
+    path('blog/', include('blog.urls'),name='bloghome')
 ] + static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

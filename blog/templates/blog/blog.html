@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Yichen Yan's Home</title>
+    <title>My Blog</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -20,8 +21,7 @@
 
     <header>
 	  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a href="{%url 'home'%}" class="navbar-brand" href="#">Yichen Yan</a>
-
+	  <a href="{% url 'home' %}" class="navbar-brand" href="#">Yichen Yan</a>
 	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 	    <span class="navbar-toggler-icon"></span>
 	  </button>
@@ -29,47 +29,28 @@
 	    <div class="navbar-nav ml-auto">
 	      <a class="nav-item nav-link" href="https://www.linkedin.com/in/yichen-yan-39539623/">Linkedin</a>
 	      <a class="nav-item nav-link" href="{% static 'Resume.pdf'%}">Resume</a>
-	      <a class="nav-item nav-link" href="{% url 'bloghome' %}">Blog</a>
+	      <a class="nav-item nav-link active" href="{% url 'bloghome'%}">Blog</a>
 	    </div>
 	  </div>
 	</nav>
     </header>
 
     <main role="main">
-
-      <section class="jumbotron text-center">
-        <div class="container">
-          <h1 class="jumbotron-heading">Hi, I'm Yichen.</h1>
-          <img src="{% static 'photo_me.png' %}" height="300"/>
-          <p class="lead text-muted">This is my first website built in the process of learning Djaogo.</p>
-          <p>
-            <a href="mailto:yan005x@gmail.com" class="btn btn-primary my-2">Email Me</a>
-            <a href="{% url 'bloghome' %}" class="btn btn-secondary my-2">My Blog</a>
-          </p>
-        </div>
-      </section>
-
-      <div class="album py-5 bg-light">
-        <div class="container">
-          <div class="row">
-
-          	{% for job in jobs.all %}
-            <div class="col-md-4">
-              <div class="card mb-4 shadow-sm">
-                <img class="card-img-top" src="{{job.image.url}}" />
-                <div class="card-body">
-                  <p class="card-text">{{job.summary}}</p>
-                  <p class="card-text">{{job.temp}}</p>
-                </div>
-              </div>
-            </div>
-            {% endfor %}
-
-        </div>
-    </div>
+    	<div class="container">
+    		<br />
+    		<h2 class="card-text text-center" >{{ blog.title }}</h2>
+    		<p class="card-text text-center" >{{ blog.time_created_friendly }}</p>
+    		<img class="img-fluid" src="{{blog.image.url}}" />
+    		<br />
+    		<br />
+    		<p class="card-text" >{{ blog.text }}</p>
 
 
-      </div>
+    		<br/>
+    		<br/>
+
+    		
+    	</div>
     </main>
 
     <footer class="text-muted">
@@ -77,6 +58,7 @@
         <p>© Yichen Yan {% now "Y" %}</p>
        </div>
     </footer>
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
